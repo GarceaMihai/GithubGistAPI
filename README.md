@@ -9,4 +9,6 @@ Features:
 
 # Screenshots
 
-!(./screenshots/Screenshot (176).png)
+![Screenshot](./screenshots/Screenshot (176).png)
+
+<img src="screenshots/Screenshot (176).png">
