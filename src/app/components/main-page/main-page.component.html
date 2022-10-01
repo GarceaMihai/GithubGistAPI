@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-content>
+    <h1>Find Gists from Github Users</h1>
+    <mat-form-field appearance="fill" class="mat-input-element">
+      <mat-label>Username</mat-label>
+      <input matInput #username>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="button" (click)="getListOfPublicGistsByUsername(username.value)" class="button">
+      Submit
+    </button>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let gist of gists; index as i">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Gist {{i + 1}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{gist[1]}} <img *ngIf="gist[2]" [src]="gist[2]" width="20" height="20" class="avatar">
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <mat-list-item *ngFor="let file of gist[0]">
+            <mat-icon mat-list-icon>
+              <fa-icon [icon]="getFileBadge(file.language)"></fa-icon>
+            </mat-icon>
+            <p (click)="openDialog(file.raw_url)">{{file.filename}}</p>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>
